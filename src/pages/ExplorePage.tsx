@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MOCK_LISTINGS, Listing, Category } from '../lib/mockData';
 import ListingCard from '../components/ListingCard';
 import TradeModal from '../components/TradeModal';
+import UpcomingFeatures from '../components/UpcomingFeatures';
 
 const CATEGORIES: Category[] = ['All', 'Electronics', 'Services', 'Fashion', 'Home', 'Vehicles'];
 
@@ -15,42 +16,27 @@ export default function ExplorePage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-900 px-6 py-20">
+      <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-900 px-6 py-24">
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]"></div>
 
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <span className="mb-6 inline-block rounded-full border border-indigo-500/30 bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-wider text-indigo-300">
-            Welcome to the New Economy
+            Welcome to Barter Verse
           </span>
           <h2 className="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl">
-            The World is Your <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Currency.</span>
+            The Future of{' '}
+            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Decentralized Trade.</span>
           </h2>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-400 md:text-xl">
-            Trade skills, goods, and digital assets directly with others. No middleman, no fiat, just pure, trust-based exchange.
+          <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
+            Money is an illusion; value is real. Barter Verse is a next-generation marketplace where you can trade physical goods, digital assets, and professional services directly. Discover items below and see how the UI works before the official backend launch.
           </p>
-
-          <div className="mx-auto mt-4 flex max-w-xl justify-center gap-8 border-t border-slate-800 pt-8 text-sm">
-            <div>
-              <p className="text-3xl font-bold text-white">2.4k</p>
-              <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Live Swaps</p>
-            </div>
-            <div className="w-px bg-slate-800"></div>
-            <div>
-              <p className="text-3xl font-bold text-white">850+</p>
-              <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Active Traders</p>
-            </div>
-            <div className="w-px bg-slate-800"></div>
-            <div>
-              <p className="text-3xl font-bold text-white">0%</p>
-              <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Fiat Fees</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      <main className="mx-auto w-full max-w-7xl flex-grow px-6 py-12">
+      <main className="mx-auto w-full max-w-7xl px-6 py-16">
         <div className="mb-10 flex flex-col items-center justify-between gap-4 md:flex-row">
-          <h3 className="text-2xl font-bold">Latest Discoveries</h3>
+          <h3 className="text-2xl font-bold">Mockup Environment Feed</h3>
 
           <div className="flex flex-wrap justify-center gap-2">
             {CATEGORIES.map((category) => (
@@ -69,7 +55,7 @@ export default function ExplorePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {filteredListings.map((item) => (
             <ListingCard
               key={item.id}
@@ -78,21 +64,11 @@ export default function ExplorePage() {
             />
           ))}
         </div>
+      </main>
 
-        {filteredListings.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-800/30 py-20 text-center">
-            <p className="text-lg text-slate-400">No items found in this category yet.</p>
-            <button
-              onClick={() => setActiveCategory('All')}
-              className="mt-4 text-indigo-400 underline hover:text-indigo-300"
-            >
-              View all listings
-            </button>
-          </div>
-        )}
+      <UpcomingFeatures />
 
       {selectedItem && <TradeModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
-      </main>
     </div>
   );
 }

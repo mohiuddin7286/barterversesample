@@ -10,6 +10,7 @@ export interface Listing {
   user: string;
   reputation: string;
   timeAgo: string;
+  imageUrl: string;
 }
 
 export const MOCK_LISTINGS: Listing[] = [
@@ -23,6 +24,7 @@ export const MOCK_LISTINGS: Listing[] = [
     user: 'Alex',
     reputation: '⭐⭐⭐⭐⭐',
     timeAgo: '2h ago',
+    imageUrl: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ export const MOCK_LISTINGS: Listing[] = [
     user: 'DesignNinja',
     reputation: '⭐⭐⭐⭐',
     timeAgo: '5h ago',
+    imageUrl: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 3,
@@ -45,6 +48,7 @@ export const MOCK_LISTINGS: Listing[] = [
     user: 'Sammy_T',
     reputation: '⭐⭐⭐⭐⭐',
     timeAgo: '1d ago',
+    imageUrl: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 4,
@@ -56,6 +60,7 @@ export const MOCK_LISTINGS: Listing[] = [
     user: 'RiderX',
     reputation: '⭐⭐⭐',
     timeAgo: '1d ago',
+    imageUrl: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 5,
@@ -67,5 +72,6 @@ export const MOCK_LISTINGS: Listing[] = [
     user: 'EarthyArt',
     reputation: '⭐⭐⭐⭐⭐',
     timeAgo: '2d ago',
+    imageUrl: 'https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=800&q=80',
   },
 ];
