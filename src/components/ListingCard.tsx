@@ -8,46 +8,46 @@ interface Props {
 
 export default function ListingCard({ item, onTradeClick }: Props) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10">
-      <div className="relative h-48 w-full overflow-hidden">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl">
+      <div className="relative h-48 w-full overflow-hidden bg-slate-100">
         <img
           src={item.imageUrl}
           alt={item.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute right-3 top-3 rounded-md border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-xs text-slate-300 backdrop-blur-md">
+        <div className="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm backdrop-blur-md">
           {item.condition}
         </div>
       </div>
 
-      <div className="flex flex-grow flex-col p-5">
+      <div className="flex flex-grow flex-col p-6">
         <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="font-semibold uppercase tracking-wider text-indigo-400">{item.category}</span>
-          <span className="text-slate-500">{item.timeAgo}</span>
+          <span className="font-bold uppercase tracking-wider text-indigo-600">{item.category}</span>
+          <span className="font-medium text-slate-400">{item.timeAgo}</span>
         </div>
 
-        <h3 className="mb-2 text-xl font-bold leading-tight transition-colors group-hover:text-indigo-300">{item.title}</h3>
-        <p className="mb-6 flex-grow text-sm text-slate-400 line-clamp-2">{item.description}</p>
+        <h3 className="mb-2 text-xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-indigo-600">{item.title}</h3>
+        <p className="mb-6 flex-grow text-sm text-slate-500 line-clamp-2">{item.description}</p>
 
-        <div className="relative mb-6 overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/80 p-4">
+        <div className="relative mb-6 overflow-hidden rounded-xl border border-indigo-100 bg-indigo-50/50 p-4">
           <div className="absolute bottom-0 left-0 top-0 w-1 bg-indigo-500"></div>
-          <p className="mb-1 text-xs font-bold uppercase text-indigo-400">Seeking</p>
-          <p className="text-sm font-medium text-white">{item.seeking}</p>
+          <p className="mb-1 text-xs font-bold uppercase text-indigo-600">Seeking</p>
+          <p className="text-sm font-semibold text-slate-800">{item.seeking}</p>
         </div>
 
-        <div className="mt-auto flex items-center justify-between border-t border-slate-700/50 pt-4">
+        <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-slate-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-indigo-200 bg-gradient-to-br from-indigo-100 to-purple-100 text-sm font-bold text-indigo-700">
               {item.user.charAt(0)}
             </div>
             <div className="text-sm">
-              <p className="mb-1 font-medium leading-none text-white">{item.user}</p>
-              <p className="text-[10px] tracking-widest">{item.reputation}</p>
+              <p className="mb-1 font-bold leading-none text-slate-900">{item.user}</p>
+              <p className="text-[10px] tracking-widest text-slate-400">{item.reputation}</p>
             </div>
           </div>
           <button
             onClick={() => onTradeClick(item)}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-indigo-600/20 transition-all active:scale-95 hover:bg-indigo-500"
+            className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:bg-indigo-700 hover:shadow-lg active:scale-95"
           >
             Trade
           </button>
