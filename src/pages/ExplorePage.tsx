@@ -9,7 +9,7 @@ const CATEGORIES: Category[] = ['All', 'Electronics', 'Services', 'Fashion', 'Ho
 export default function ExplorePage() {
   const [selectedItem, setSelectedItem] = useState<Listing | null>(null);
   const [activeCategory, setActiveCategory] = useState<Category>('All');
-  const [showVideo, setShowVideo] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const filteredListings = activeCategory === 'All'
     ? MOCK_LISTINGS
@@ -18,9 +18,9 @@ export default function ExplorePage() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-indigo-50 via-white to-purple-50 px-6 py-24">
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-1/3 rounded-full bg-indigo-400 opacity-5 blur-[150px]"></div>
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-1/3 rounded-full bg-indigo-400 opacity-5 blur-[150px]"></div>
 
-        <div className="relative z-10 mx-auto max-w-5xl text-center">
+        <div className="relative z-10 mx-auto max-w-6xl text-center">
           <span className="mb-6 inline-block rounded-full border border-indigo-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-indigo-600 shadow-sm">
             Welcome to Barter Verse
           </span>
@@ -31,28 +31,54 @@ export default function ExplorePage() {
             Money is an illusion; value is real. Barter Verse is a next-generation marketplace where you can trade physical goods, digital assets, and professional services directly.
           </p>
 
-          <button
-            onClick={() => setShowVideo(true)}
-            className="mx-auto flex items-center gap-3 rounded-xl bg-slate-900 px-8 py-4 font-bold text-white shadow-lg shadow-slate-900/20 transition-all hover:scale-105 hover:bg-indigo-600"
-          >
-            <span className="text-xl">▶</span> Watch Introduction Video
-          </button>
+          <div className="group relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-3xl border-4 border-white bg-slate-900 shadow-2xl">
+            {!isVideoPlaying ? (
+              <div
+                className="absolute inset-0 flex cursor-pointer items-center justify-center"
+                onClick={() => setIsVideoPlaying(true)}
+              >
+                <img
+                  src="https://img.youtube.com/vi/9GqIN7DVW8U/maxresdefault.jpg"
+                  alt="Barter Verse Introduction"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-indigo-900/10 transition-colors duration-500 group-hover:bg-transparent"></div>
+
+                <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-indigo-500/50">
+                  <div className="ml-1 h-0 w-0 border-t-[10px] border-b-[10px] border-l-[18px] border-t-transparent border-b-transparent border-l-indigo-600"></div>
+                </div>
+              </div>
+            ) : (
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/9GqIN7DVW8U?autoplay=1"
+                title="Barter Verse Introduction"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0"
+              ></iframe>
+            )}
+          </div>
         </div>
       </section>
 
-      <main className="mx-auto w-full max-w-7xl px-6 py-16">
-        <div className="mb-10 flex flex-col items-center justify-between gap-4 md:flex-row">
-          <h3 className="text-2xl font-bold text-slate-900">Live Mockup Feed</h3>
+      <main className="mx-auto w-full max-w-7xl px-6 py-20">
+        <div className="mb-12 flex flex-col items-center justify-between gap-4 md:flex-row">
+          <h3 className="text-3xl font-extrabold text-slate-900">Live Mockup Feed</h3>
 
-          <div className="flex flex-wrap justify-center gap-2 rounded-full border border-slate-200 bg-white p-1 shadow-sm">
+          <div className="flex flex-wrap justify-center gap-2 rounded-full border border-slate-200 bg-white p-1.5 shadow-sm">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
+                className={`rounded-full px-6 py-2 text-sm font-bold transition-all duration-200 ${
                   activeCategory === category
                     ? 'bg-indigo-600 text-white shadow-md'
-                    : 'text-slate-600 hover:bg-slate-50'
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                 }`}
               >
                 {category}
@@ -75,30 +101,6 @@ export default function ExplorePage() {
       <UpcomingFeatures />
 
       {selectedItem && <TradeModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
-
-      {showVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl">
-            <button
-              onClick={() => setShowVideo(false)}
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-bold text-slate-900 transition-colors hover:bg-white/20"
-            >
-              ✕
-            </button>
-            <div className="aspect-video w-full bg-black">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/9GqIN7DVW8U?autoplay=1"
-                title="Barter Verse Introduction"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
