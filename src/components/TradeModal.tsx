@@ -9,9 +9,29 @@ interface Props {
 
 export default function TradeModal({ item, onClose }: Props) {
   const [showWaitlist, setShowWaitlist] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { coins } = useUser();
 
   if (showWaitlist) {
+    if (isSubmitted) {
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-md rounded-3xl border border-slate-100 bg-white p-8 text-center shadow-2xl">
+            <button onClick={onClose} className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-400 transition-colors hover:text-slate-900">✕</button>
+            <div className="mb-5 text-6xl">✅</div>
+            <h2 className="mb-3 text-2xl font-extrabold text-slate-900">You're on the list!</h2>
+            <p className="mb-8 font-medium text-slate-600">Keep an eye on your inbox.</p>
+            <button
+              onClick={onClose}
+              className="w-full rounded-xl bg-indigo-600 px-5 py-4 text-lg font-bold text-white shadow-lg shadow-indigo-600/30 transition hover:bg-indigo-700 active:scale-95"
+            >
+              Awesome
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
         <div className="relative w-full max-w-md rounded-3xl border border-slate-100 bg-white p-8 text-center shadow-2xl">
@@ -27,7 +47,7 @@ export default function TradeModal({ item, onClose }: Props) {
             className="mb-4 w-full rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 font-medium text-slate-900 outline-none transition-all focus:ring-2 focus:ring-indigo-500"
           />
           <button
-            onClick={onClose}
+            onClick={() => setIsSubmitted(true)}
             className="w-full rounded-xl bg-indigo-600 px-5 py-4 text-lg font-bold text-white shadow-lg shadow-indigo-600/30 transition hover:bg-indigo-700 active:scale-95"
           >
             Claim Early Access
