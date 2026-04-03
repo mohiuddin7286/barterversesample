@@ -23,22 +23,24 @@ export default function UpcomingFeatures() {
   ];
 
   return (
-    <section className="border-t border-slate-800 bg-slate-900/50 py-16">
+    <section className="border-t border-slate-200 bg-white py-20">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 text-center">
-          <span className="mb-2 block text-sm font-bold uppercase tracking-wider text-indigo-400">Roadmap</span>
-          <h2 className="text-3xl font-extrabold md:text-4xl">The Verse is Expanding</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-400">
+        <div className="mb-16 text-center">
+          <span className="mb-3 block text-sm font-bold uppercase tracking-wider text-indigo-600">Roadmap</span>
+          <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl">The Verse is Expanding</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             This trial version is just a glimpse. The full platform is currently being developed with an advanced backend architecture.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {features.map((feat, idx) => (
-            <div key={idx} className="rounded-2xl border border-slate-700 bg-slate-800 p-8 transition duration-300 hover:border-indigo-500/50">
-              <div className="mb-4 text-4xl">{feat.icon}</div>
-              <h3 className="mb-3 text-xl font-bold">{feat.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-400">{feat.description}</p>
+            <div key={idx} className="group rounded-2xl border border-slate-200 bg-slate-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-100 bg-white text-3xl shadow-sm transition-transform group-hover:scale-110">
+                {feat.icon}
+              </div>
+              <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-indigo-600">{feat.title}</h3>
+              <p className="text-sm leading-relaxed text-slate-600">{feat.description}</p>
             </div>
           ))}
         </div>

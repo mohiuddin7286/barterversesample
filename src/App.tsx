@@ -3,6 +3,7 @@ import { UserProvider } from './contexts/UserContext';
 import TopBanner from './components/TopBanner';
 import Navbar from './components/Navbar';
 import ExplorePage from './pages/ExplorePage';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <div className="flex-grow">
           <ExplorePage />
         </div>
+        <Footer />
       </div>
     </UserProvider>
   );
