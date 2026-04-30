@@ -38,6 +38,38 @@ const ComingSoonPage: React.FC = () => {
   // Live Google Apps Script URL
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6GRQKJ8z7Atyd7gRXA8eCpyElorH1RaE9WYnCZbxqp40wzKDH36UJzmBAurh--kk-/exec';
 
+  // --- ANTI-SNOOPING SECURITY BLOCK ---
+  useEffect(() => {
+    // 1. Disable Right-Click (Context Menu)
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    // 2. Disable F12, Ctrl+Shift+I (DevTools), Ctrl+Shift+J (Console), Ctrl+Shift+C (Inspector), and Ctrl+U (View Source)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    // Attach event listeners
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup on unmount
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+  // --- END ANTI-SNOOPING BLOCK ---
+
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
