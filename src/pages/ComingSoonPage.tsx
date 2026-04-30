@@ -151,7 +151,7 @@ const ComingSoonPage: React.FC = () => {
                   <img className="w-8 h-8 rounded-full border-2 border-white shadow-sm" src="https://i.pravatar.cc/100?img=12" alt="User" />
                   <div className="w-8 h-8 rounded-full border-2 border-white shadow-sm bg-indigo-100 flex items-center justify-center text-[10px] font-bold text-indigo-600">+2k</div>
                 </div>
-                <p className="text-sm text-slate-600 font-medium">Join <span className="font-bold text-slate-900">2,409+</span> early adopters</p>
+                <p className="text-sm text-slate-600 font-medium">Join <span className="font-bold text-slate-900">400+</span> early adopters</p>
               </div>
 
               {/* Form */}
@@ -405,7 +405,8 @@ const ComingSoonPage: React.FC = () => {
                   Mohiuddin Ahmad
                 </p>
                 <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mt-1">
-                  KL University HYD
+                  (B.TECH AI&DS, 2ND YEAR)
+                  KL University Hyderabad, India
                 </p>
               </div>
             </div>
