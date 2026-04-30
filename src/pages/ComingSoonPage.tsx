@@ -406,7 +406,7 @@ const ComingSoonPage: React.FC = () => {
                 </p>
                 <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mt-1">
                   (B.TECH AI&DS, 2ND YEAR)
-                  KL University Hyderabad, India
+                  KL University HYD, India
                 </p>
               </div>
             </div>
